@@ -1,27 +1,28 @@
-/**
+﻿/**
  * @file ArticlesSection.tsx
  * @description Ba vị trí lãnh đạo cấp quốc gia — 1 featured + 2 cards grid.
  */
 
 import { SideWord } from "./SideWord";
+import { asset } from "../utils/asset";
 
 const ARTICLES = [
 	{
-		img: "/landing/vapec-event.jpg",
+		img: asset("/landing/vapec-event.jpg"),
 		read: "Vị thế Thể chế · 2026",
 		title: "Phó Chủ tịch Thường trực kiêm Trưởng Ban Công nghệ",
 		desc: "Hiệp hội Phát triển Doanh nghiệp Tư nhân & Kinh tế Tập thể Việt Nam (VAPEC) — Cơ quan chủ quản: Bộ Tài chính.",
 		tags: ["VAPEC", "Bộ Tài chính", "Doanh nghiệp Tư nhân", "Kinh tế Tập thể"],
 	},
 	{
-		img: "/landing/qsac-leader.jpg",
+		img: asset("/landing/qsac-leader.jpg"),
 		read: "Vị thế Thể chế · 2026",
 		title: "Trưởng Ban Công nghệ — QSAC",
 		desc: "Trung tâm Công nghệ Chống hàng giả QSAC, thuộc Hiệp hội Chống hàng giả & Bảo vệ Người tiêu dùng (VATAP).",
 		tags: ["QSAC", "VATAP", "Chống hàng giả", "Bảo vệ NTD"],
 	},
 	{
-		img: "/landing/vcida-signing.jpg",
+		img: asset("/landing/vcida-signing.jpg"),
 		read: "Vị thế Thể chế · 2026",
 		title: "Trưởng Ban Công nghệ — VCIDA",
 		desc: "Hiệp hội Công nghiệp Văn hóa VCIDA — định hướng chính sách công nghiệp văn hóa quốc gia.",

@@ -15,6 +15,7 @@ import { ReviewsSection } from "../components/ReviewsSection";
 import { SideWord } from "../components/SideWord";
 import { LANDING_CSS, LANDING_FONTS_HREF } from "../styles";
 import { MOCK_ARTICLES } from "../data/articles";
+import { asset } from "../utils/asset";
 
 const NEWS_ITEMS = MOCK_ARTICLES.slice(0, 6);
 
@@ -22,8 +23,8 @@ const NEWS_ITEMS = MOCK_ARTICLES.slice(0, 6);
    Click thumb sẽ swap đồng bộ hero-bg + text + counter. */
 const HERO_IMAGES = [
 	{
-		thumb: "/landing/hero-1.jpg",
-		full: "/landing/hero-1.jpg",
+		thumb: asset("/landing/hero-1.jpg"),
+		full: asset("/landing/hero-1.jpg"),
 		alt: "ceremony",
 		kicker: "[Đạt Giải Thưởng]",
 		num: "[01]",
@@ -33,8 +34,8 @@ const HERO_IMAGES = [
 			"Ở Con Đường Hữu Cơ, chúng tôi không chạy campaign cho có — chúng tôi tạo ra kết quả. Đồng hành với những thương hiệu dám nghĩ lớn và không chơi an toàn.",
 	},
 	{
-		thumb: "/landing/hero-2.jpg",
-		full: "/landing/hero-2.jpg",
+		thumb: asset("/landing/hero-2.jpg"),
+		full: asset("/landing/hero-2.jpg"),
 		alt: "partnership",
 		kicker: "[Tăng Trưởng Bền Vững]",
 		num: "[02]",
@@ -44,8 +45,8 @@ const HERO_IMAGES = [
 			"Con Đường Hữu Cơ tin vào tăng trưởng từ gốc — không chiêu trò, không thổi phồng. Chúng tôi nuôi dưỡng thương hiệu của bạn để phát triển bền vững và chạm đúng người cần chạm.",
 	},
 	{
-		thumb: "/landing/hero-3.jpg",
-		full: "/landing/hero-3.jpg",
+		thumb: asset("/landing/hero-3.jpg"),
+		full: asset("/landing/hero-3.jpg"),
 		alt: "handshake",
 		kicker: "[Đối Tác Chiến Lược]",
 		num: "[03]",
@@ -692,7 +693,7 @@ export default function LandingPage() {
 													<img
 														decoding="async"
 														loading="lazy"
-														src="/landing/proof-msci.jpg"
+														src={asset("/landing/proof-msci.jpg")}
 														alt="Đội ngũ Con Đường Hữu Cơ trước màn hình demo M-SCI"
 														style={{display:'block',width:'100%',height:'100%',objectPosition:'center top',objectFit:'cover'}}
 													/>
@@ -719,7 +720,7 @@ export default function LandingPage() {
 											<img
 												decoding="auto"
 												loading="lazy"
-												src="/landing/about-team.jpg"
+												src={asset("/landing/about-team.jpg")}
 												alt="Đội ngũ Con Đường Hữu Cơ làm việc cùng nông dân trên đồng"
 												style={{display:'block',width:'100%',height:'100%',borderRadius:'inherit',objectPosition:'center center',objectFit:'cover'}}
 											/>
@@ -835,7 +836,7 @@ export default function LandingPage() {
 													<div className="gallery-slide-track">
 														{['/home.png','/battle_world_boss.jpg','/achievements.jpg','/shop_OGNmarket_seeds.jpg','/lobby_world_boss.jpg','/lobby_solo_bot.jpg','/invite_friends.jpg'].map((src)=>(
 															<div key={src} className="gallery-slide-slot">
-																<img src={src} alt="" loading="lazy" decoding="async" className="gallery-slide-img" style={{position:'absolute',left:'0',top:'0',width:'100%',height:'100%',objectFit:'cover',objectPosition:'top center'}} />
+																<img src={asset(src)} alt="" loading="lazy" decoding="async" className="gallery-slide-img" style={{position:'absolute',left:'0',top:'0',width:'100%',height:'100%',objectFit:'cover',objectPosition:'top center'}} />
 															</div>
 														))}
 													</div>
@@ -888,7 +889,7 @@ export default function LandingPage() {
 										</div>
 										<div className="tile dark-grad reveal delay-2" style={{flex:1,position:'relative',overflow:'hidden',minHeight:'180px'}}>
 											<div style={{position:'absolute',inset:0,zIndex:0}}>
-												<img src="/landing/policy-team.jpg" alt="Đội ngũ Con Đường Hữu Cơ tại sự kiện Avalanche" loading="lazy" decoding="async" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center top'}} />
+												<img src={asset("/landing/policy-team.jpg")} alt="Đội ngũ Con Đường Hữu Cơ tại sự kiện Avalanche" loading="lazy" decoding="async" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center top'}} />
 											</div>
 											<div style={{position:'absolute',inset:0,background:'linear-gradient(135deg,rgba(0,0,0,.7) 0%,rgba(0,0,0,.3) 100%)',zIndex:1}} />
 											<div style={{position:'absolute',inset:0,zIndex:2,display:'flex',flexDirection:'column',justifyContent:'space-between',padding:'24px'}}>
@@ -1074,7 +1075,7 @@ export default function LandingPage() {
 
 				{/* ── CTA ──────────────────────────────────────────────────── */}
 				<section className="cta" ref={ctaSectionRef}>
-					<img ref={ctaBgRef} src="/landing/cta-award.jpg" alt="Lễ biểu dương Thương hiệu mạnh phát triển quốc gia" loading="lazy" decoding="async" style={{ willChange: "transform" }} />
+					<img ref={ctaBgRef} src={asset("/landing/cta-award.jpg")} alt="Lễ biểu dương Thương hiệu mạnh phát triển quốc gia" loading="lazy" decoding="async" style={{ willChange: "transform" }} />
 					<div className="cta-content">
 						<div className="cta-spark"><span className="spark">✦✦✦✦✦✦</span></div>
 						<h2 style={{ textAlign: "center", width: "100%" }}>Cây lớn không vì ai tưới ép, mà vì rễ cắm đủ sâu. Thương hiệu cũng vậy.</h2>
