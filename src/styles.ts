@@ -198,9 +198,7 @@ export const LANDING_CSS = String.raw`
 /* Paragraph riêng — translate same amount như thumbs để ngay dưới 3 ảnh. Right-align, max-width hẹp,
    margin-left:auto kéo về phải cho right edge match thumb cuối. */
 .landing-root .hero-copy p{margin:0 0 0 auto;max-width:330px;text-align:right;font-size:clamp(14px,1.05vw,17px);font-weight:600;line-height:1.5;color:#dcdcdc;transform:translate(calc(-10vw + var(--pad)),-240px)}
-/* Blurb tối đa 3 dòng — line-clamp áp lên text-slot-inner (chỗ chứa text thật), giữ
-   height slot ổn định để slide animation không vỡ. */
-.landing-root .hero-copy p .text-slot-inner{display:-webkit-box;-webkit-line-clamp:3;line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.landing-root .hero-copy p .text-slot-inner{display:block}
 .landing-root .floating-copy{margin-top:26px}
 /* Pin CTA button vào góc phải-dưới hero. translateX(-10vw + pad) → right edge align với
    boundary cột 9/10 = 90vw (same công thức như thumbs + blurb). */
