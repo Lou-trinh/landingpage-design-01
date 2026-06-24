@@ -14,10 +14,9 @@ import { PricingSection } from "../components/PricingSection";
 import { ReviewsSection } from "../components/ReviewsSection";
 import { SideWord } from "../components/SideWord";
 import { LANDING_CSS, LANDING_FONTS_HREF } from "../styles";
-import { MOCK_ARTICLES } from "../data/articles";
+import { MOCK_ARTICLES, type Article } from "../data/articles";
 import { asset } from "../utils/asset";
 
-const NEWS_ITEMS = MOCK_ARTICLES.slice(0, 6);
 
 /* 3 slide — mỗi slide có ảnh + tập text riêng (kicker, num, headline A/B, blurb).
    Click thumb sẽ swap đồng bộ hero-bg + text + counter. */
@@ -103,6 +102,7 @@ export default function LandingPage() {
 	const [nextBgIdx, setNextBgIdx] = useState<number | null>(null);
 	const [direction, setDirection] = useState<"up" | "down">("up");
 	const [animKey, setAnimKey] = useState(0);
+	const [newsItems, setNewsItems] = useState<Article[]>(MOCK_ARTICLES.slice(0, 6));
 
 	/* Click bất kỳ lúc nào. Mid-anim click → SNAP current animation tới đích đang chạy (bgIdx
 	   = nextBgIdx) rồi remount qua animKey++ → animation MỚI chạy fresh từ frame 0, không flash
@@ -174,6 +174,28 @@ export default function LandingPage() {
 	}, []);
 
 	const goLogin = () => navigate("/login");
+
+	useEffect(() => {
+		fetch("https://app.cdhc.vn/api/news/articles?limit=6")
+			.then((r) => r.json())
+			.then((data) => {
+				const items: Article[] = (data.items ?? []).slice(0, 6).map(
+					(a: { id: string; title: string; excerpt?: string; coverImage?: string; category?: { name: string }; author: { name: string; picture?: string | null }; publishedAt: string; slug: string }) => ({
+						id: a.id,
+						title: a.title,
+						excerpt: a.excerpt ?? "",
+						image: a.coverImage ?? "https://picsum.photos/seed/news/800/600",
+						category: a.category?.name ?? "Tin tức",
+						author: a.author?.name ?? "",
+						authorAvatar: a.author?.picture ?? undefined,
+						date: new Date(a.publishedAt).toLocaleDateString("vi-VN", { day: "numeric", month: "long" }),
+						href: "/news/" + a.slug,
+					})
+				);
+				if (items.length > 0) setNewsItems(items);
+			})
+			.catch(() => {});
+	}, []);
 	const [showPhone, setShowPhone] = useState(false);
 	const [spStat, setSpStat] = useState(0);
 
@@ -634,7 +656,7 @@ export default function LandingPage() {
 						<div className="grid-frame">
 							<SideWord dark className="reveal">/ TIN TỨC NỔI BẬT</SideWord>
 							<div className="news-grid" ref={serviceGridRef}>
-								{NEWS_ITEMS.map((article, i) => (
+								{newsItems.map((article, i) => (
 									<article key={article.id} className={`news-card reveal${i % 3 === 1 ? " delay-1" : i % 3 === 2 ? " delay-2" : ""}`}>
 										<div className="news-card-img">
 											<img src={article.image} alt={article.title} loading="lazy" decoding="async" />
